@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Drone Store - FPV Drones & Parts</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ================================================================
+   YOUR DRONE STORE - Main Stylesheet
+   基于 MEPSKING 框架的空白电商模板
+   ================================================================ */
+
+/* ---------- 变量 & 重置 ---------- */
+:root {
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #1e1e1e;
+  --bg-hover: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #666666;
+  --accent-green: #2ecc71;
+  --accent-yellow: #f1c40f;
+  --accent-red: #e74c3c;
+  --accent-blue: #3498db;
+  --border-color: #2a2a2a;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  --transition: all 0.3s ease;
+  --max-width: 1280px;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- 通用按钮 ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+  background: var(--accent-green);
+  color: #fff;
+}
+
+.btn-coupon {
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 16px;
+  padding: 14px 36px;
+}
+
+.btn-coupon:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+.btn-subscribe {
+  background: var(--accent-yellow);
+  color: var(--bg-primary);
+}
+
+.btn-subscribe:hover {
+  background: #d4ac0d;
+}
+
+/* ================================================================
+   1. 公告栏
+   ================================================================ */
+.announcement-bar {
+  background: linear-gradient(90deg, var(--accent-green), #27ae60);
+  color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.announcement-bar p {
+  margin: 0;
+}
+
+/* ================================================================
+   2. 主导航栏
+   ================================================================ */
+.main-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  gap: 20px;
+}
+
+/* Logo */
+.logo {
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+
+.logo-text .highlight {
+  color: var(--accent-green);
+}
+
+/* 搜索框 */
+.search-box {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-btn {
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.search-btn:hover {
+  color: var(--accent-green);
+}
+
+/* 右侧功能按钮 */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 13px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.action-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.action-btn.sign-in i:last-child {
+  font-size: 10px;
+}
+
+.cart-count {
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
+/* 主菜单导航 */
+.main-nav {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.category-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--accent-green);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.category-toggle:hover {
+  background: #27ae60;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 12px 18px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-radius: var(--radius) var(--radius) 0 0;
+  transition: var(--transition);
+}
+
+.nav-links li a:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+/* ================================================================
+   3. Hero Banner 轮播
+   ================================================================ */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.banner-slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: flex;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide-placeholder {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  gap: 8px;
+}
+
+.slide-placeholder i {
+  font-size: 48px;
+  opacity: 0.3;
+}
+
+.slide-placeholder p {
+  font-size: 16px;
+}
+
+.slide-placeholder small {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 60px;
+  max-width: 600px;
+}
+
+.slide-content h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.slide-content p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* 轮播控制 */
+.banner-prev, .banner-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: var(--transition);
+}
+
+.banner-prev:hover, .banner-next:hover {
+  background: var(--accent-green);
+}
+
+.banner-prev { left: 20px; }
+.banner-next { right: 20px; }
+
+.banner-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background: var(--accent-green);
+  transform: scale(1.2);
+}
+
+/* ================================================================
+   4. 产品分类图标
+   ================================================================ */
+.category-icons {
+  padding: 40px 0;
+  background: var(--bg-primary);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 8px;
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.category-item:hover {
+  background: var(--bg-hover);
+  transform: translateY(-4px);
+}
+
+.cat-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--cat-color) 15%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--cat-color);
+  transition: var(--transition);
+}
+
+.category-item:hover .cat-icon {
+  background: color-mix(in srgb, var(--cat-color) 30%, transparent);
+  transform: scale(1.1);
+}
+
+.category-item span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ================================================================
+   5. 促销模块
+   ================================================================ */
+.promo-section {
+  padding: 0 0 40px;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.coupon-card, .fast-ship-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.coupon-inner {
+  background: linear-gradient(135deg, var(--accent-red), #c0392b);
+  padding: 30px;
+  text-align: center;
+}
+
+.coupon-inner h3 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.discount {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.coupon-inner p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+
+.fast-ship-card {
+  background: linear-gradient(135deg, #1a3a2a, #0d2818);
+  padding: 24px 30px;
+}
+
+.fast-ship-card h3 {
+  font-size: 16px;
+  color: var(--accent-green);
+  margin-bottom: 4px;
+}
+
+.fast-ship-card > p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.fast-ship-scroll {
+  overflow: hidden;
+}
+
+.fast-ship-items {
+  display: flex;
+  gap: 12px;
+  animation: scrollFastShip 20s linear infinite;
+}
+
+@keyframes scrollFastShip {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.fast-ship-item {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.fast-ship-item i {
+  font-size: 20px;
+}
+
+.placeholder-item {
+  border: 1px dashed var(--border-color);
+}
+
+/* ================================================================
+   6. 用户导向推荐
+   ================================================================ */
+.user-categories {
+  padding: 40px 0;
+}
+
+.user-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.user-cat-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.user-cat-card:hover {
+  border-color: var(--accent-green);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.user-cat-img {
+  height: 180px;
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  gap: 8px;
+}
+
+.user-cat-img i {
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+.user-cat-img span {
+  font-size: 13px;
+}
+
+.user-cat-info {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-cat-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.user-cat-info p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.user-cat-info i {
+  color: var(--accent-green);
+  font-size: 18px;
+}
+
+/* ================================================================
+   7. Flash Sale
+   ================================================================ */
+.flash-sale {
+  padding: 40px 0;
+  background: var(--bg-secondary);
+}
+
+.flash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.flash-header h2 {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flash-header h2 i {
+  color: var(--accent-yellow);
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.countdown > span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.time-block {
+  background: var(--bg-primary);
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.time-block strong {
+  font-size: 20px;
+  display: block;
+  line-height: 1;
+}
+
+.time-block small {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.time-sep {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-red);
+}
+
+.view-all {
+  font-size: 14px;
+  color: var(--accent-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.view-all:hover {
+  color: var(--accent-yellow);
+}
+
+.product-scroll-wrapper {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-green) var(--bg-primary);
+}
+
+.product-scroll {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 10px;
+}
+
+/* ================================================================
+   8. 产品展示网格
+   ================================================================ */
+.products-section {
+  padding: 50px 0;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* 产品卡片 */
+.product-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.product-card:hover {
+  border-color: var(--accent-green);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* 占位产品卡片 */
+.placeholder-product {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-muted);
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  margin: 10px;
+}
+
+.product-placeholder i {
+  font-size: 48px;
+  opacity: 0.3;
+}
+
+.product-placeholder p {
+  font-size: 14px;
+}
+
+/* 实际产品卡片（当你上传产品后使用这个结构） */
+.product-card .product-image {
+  width: 100%;
+  height: 200px;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card .product-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--accent-red);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.product-card .product-info {
+  padding: 16px;
+}
+
+.product-card .product-brand {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.product-card .product-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card .product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.product-card .price-current {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-green);
+}
+
+.product-card .price-original {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.product-card .add-to-cart {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent-green);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.product-card .add-to-cart:hover {
+  background: #27ae60;
+}
+
+/* ================================================================
+   9. 服务保障
+   ================================================================ */
+.trust-badges {
+  padding: 40px 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.badge-item {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.badge-item i {
+  font-size: 36px;
+  color: var(--accent-green);
+  margin-bottom: 12px;
+}
+
+.badge-item h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.badge-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ================================================================
+   10. 页脚 - 订阅区
+   ================================================================ */
+.newsletter-section {
+  padding: 50px 0 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.newsletter-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.5fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.newsletter-content h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.newsletter-content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.ratings {
+  display: flex;
+  gap: 24px;
+}
+
+.rating-badge {
+  text-align: center;
+}
+
+.rating-badge .stars {
+  color: var(--accent-yellow);
+  font-size: 14px;
+}
+
+.rating-badge .score {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.rating-badge small {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.newsletter-form form {
+  display: flex;
+  gap: 0;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-right: none;
+  border-radius: var(--radius) 0 0 var(--radius);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.newsletter-form input:focus {
+  border-color: var(--accent-green);
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.social-icon:hover {
+  background: var(--accent-green);
+  color: #fff;
+  border-color: var(--accent-green);
+  transform: translateY(-2px);
+}
+
+/* ================================================================
+   11. 页脚 - 链接区
+   ================================================================ */
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 40px 0;
+}
+
+.footer-col h4 {
+  font-size: 15px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent-green);
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.contact-info li i {
+  color: var(--accent-green);
+  width: 16px;
+}
+
+.payment-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.payment-icons i {
+  font-size: 24px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.payment-icons i:hover {
+  color: var(--text-primary);
+}
+
+.security-badges {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.security-badges i {
+  color: var(--accent-green);
+}
+
+/* 版权栏 */
+.copyright-bar {
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.copyright-bar p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ================================================================
+   响应式设计
+   ================================================================ */
+
+/* 平板 */
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .newsletter-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .social-links {
+    flex-direction: row;
+  }
+}
+
+/* 手机 */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    order: 3;
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-top: 10px;
+  }
+
+  .nav-links {
+    display: none; /* 移动端可改为下拉菜单 */
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .cat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  .category-item span {
+    font-size: 11px;
+  }
+
+  .promo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-cat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .badge-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .hero-banner {
+    height: 300px;
+  }
+
+  .slide-content {
+    padding: 20px 30px;
+  }
+
+  .slide-content h1 {
+    font-size: 24px;
+  }
+
+  .flash-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .badge-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .header-actions .action-btn span {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Drone Store - FPV Drones & Parts</title>
+  <link rel="stylesheet" >
+  
+</head>
+<body>
+
+  <!-- ========== 公告栏 ========== -->
+  <div class="announcement-bar">
+    <div class="container">
+      <p>🚀 Free Worldwide Shipping on Orders Over $99 | 7-Day No-Reason Returns!</p>
+    </div>
+  </div>
+
+  <!-- ========== 顶部导航 ========== -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <span class="logo-text">YOUR<span class="highlight">DRONE</span></span>
+      </a>
+
+      <!-- 搜索框 -->
+      <div class="search-box">
+        <input type="text" placeholder="I'm searching for..." id="searchInput">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+
+      <!-- 右侧功能 -->
+      <div class="header-actions">
+        <a href="#" class="action-btn" title="Add to Desktop">
+          <i class="fas fa-desktop"></i>
+          <span>Add to Desktop</span>
+        </a>
+        <a href="#" class="action-btn sign-in">
+          <i class="fas fa-user"></i>
+          <span>Sign In</span>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="action-btn lang-selector">
+          <span>EN</span>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="action-btn cart" id="cartBtn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 主菜单 -->
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <button class="category-toggle" id="categoryToggle">
+          <i class="fas fa-bars"></i>
+          <span>Shop by Category</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#categories">Shop by Category</a></li>
+          <li><a href="#flash-sale">Hot Deals</a></li>
+          <li><a href="#">Build Guides</a></li>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Brands</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== 主体内容 ========== -->
+  <main>
+
+    <!-- Hero Banner 轮播 -->
+    <section class="hero-banner" id="heroBanner">
+      <div class="banner-slides" id="bannerSlides">
+        <!-- 幻灯片 1 -->
+        <div class="slide active">
+          <div class="slide-placeholder">
+            <i class="fas fa-image"></i>
+            <p>替换为你的 Hero Banner 图片</p>
+            <small>建议尺寸：1920×600px</small>
+          </div>
+          <div class="slide-content">
+            <h1>YOUR HERO TITLE HERE</h1>
+            <p>Your promotional subtitle goes here</p>
+            <a href="#products" class="btn btn-primary">SHOP NOW</a>
+          </div>
+        </div>
+        <!-- 幻灯片 2 -->
+        <div class="slide">
+          <div class="slide-placeholder">
+            <i class="fas fa-image"></i>
+            <p>第二张轮播图（替换为你的图片）</p>
+          </div>
+          <div class="slide-content">
+            <h1>PROMOTION TITLE 2</h1>
+            <p>Second promotional banner text</p>
+            <a href="#products" class="btn btn-primary">EXPLORE</a>
+          </div>
+        </div>
+        <!-- 幻灯片 3 -->
+        <div class="slide">
+          <div class="slide-placeholder">
+            <i class="fas fa-image"></i>
+            <p>第三张轮播图（替换为你的图片）</p>
+          </div>
+          <div class="slide-content">
+            <h1>PROMOTION TITLE 3</h1>
+            <p>Third promotional banner text</p>
+            <a href="#products" class="btn btn-primary">LEARN MORE</a>
+          </div>
+        </div>
+      </div>
+      <!-- 轮播控制 -->
+      <button class="banner-prev" id="bannerPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="banner-next" id="bannerNext"><i class="fas fa-chevron-right"></i></button>
+      <div class="banner-dots" id="bannerDots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </section>
+
+    <!-- 产品分类图标区 -->
+    <section class="category-icons" id="categories">
+      <div class="container">
+        <div class="category-grid">
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #2ecc71;">
+              <i class="fas fa-fan"></i>
+            </div>
+            <span>Motors</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #3498db;">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <span>ESC</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #e74c3c;">
+              <i class="fas fa-board"></i>
+            </div>
+            <span>Flight Controller</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #f39c12;">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <span>Radio Controller</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #9b59b6;">
+              <i class="fas fa-battery-full"></i>
+            </div>
+            <span>Batteries</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #1abc9c;">
+              <i class="fas fa-vr-cardboard"></i>
+            </div>
+            <span>Goggles</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #e67e22;">
+              <i class="fas fa-propeller"></i>
+            </div>
+            <span>Propellers</span>
+          </a>
+          <a href="#" class="category-item">
+            <div class="cat-icon" style="--cat-color: #34495e;">
+              <i class="fas fa-toolbox"></i>
+            </div>
+            <span>Accessories</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 促销模块 -->
+    <section class="promo-section">
+      <div class="container promo-grid">
+        <!-- 优惠券 -->
+        <div class="coupon-card">
+          <div class="coupon-inner">
+            <h3>COUPON</h3>
+            <div class="discount">12% OFF</div>
+            <p>Use code: DRONE12</p>
+            <button class="btn btn-coupon">Collect</button>
+          </div>
+        </div>
+        <!-- 快速发货 -->
+        <div class="fast-ship-card">
+          <h3><i class="fas fa-truck"></i> LOCAL SHIPPING</h3>
+          <p>Ship Within 24 Hours</p>
+          <div class="fast-ship-scroll">
+            <div class="fast-ship-items" id="fastShipItems">
+              <!-- 占位：后续替换为你的产品小图 -->
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+              <div class="fast-ship-item placeholder-item">
+                <i class="fas fa-image"></i>
+                <span>产品图</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 用户导向推荐 -->
+    <section class="user-categories">
+      <div class="container">
+        <div class="user-cat-grid">
+          <a href="#" class="user-cat-card">
+            <div class="user-cat-img placeholder-img">
+              <i class="fas fa-drone"></i>
+              <span>产品图片</span>
+            </div>
+            <div class="user-cat-info">
+              <h4>FPV Parts for Beginners</h4>
+              <p>新手入门零件推荐</p>
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+          <a href="#" class="user-cat-card">
+            <div class="user-cat-img placeholder-img">
+              <i class="fas fa-drone"></i>
+              <span>产品图片</span>
+            </div>
+            <div class="user-cat-info">
+              <h4>Freestyle & Racing</h4>
+              <p>自由飞行与竞速零件</p>
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+          <a href="#" class="user-cat-card">
+            <div class="user-cat-img placeholder-img">
+              <i class="fas fa-drone"></i>
+              <span>产品图片</span>
+            </div>
+            <div class="user-cat-info">
+              <h4>Long Range Drones</h4>
+              <p>长距离无人机零件</p>
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flash Sale / 限时促销 -->
+    <section class="flash-sale" id="flash-sale">
+      <div class="container">
+        <div class="flash-header">
+          <h2><i class="fas fa-bolt"></i> Flash Sale</h2>
+          <div class="countdown">
+            <span>Ends In</span>
+            <div class="timer" id="countdownTimer">
+              <span class="time-block"><strong>12</strong><small>H</small></span>
+              <span class="time-sep">:</span>
+              <span class="time-block"><strong>00</strong><small>M</small></span>
+              <span class="time-sep">:</span>
+              <span class="time-block"><strong>00</strong><small>S</small></span>
+            </div>
+          </div>
+          <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-scroll-wrapper">
+          <div class="product-scroll" id="productScroll">
+            <!-- 空产品卡片占位 -->
+            <div class="product-card placeholder-product">
+              <div class="product-placeholder">
+                <i class="fas fa-plus-circle"></i>
+                <p>待上传产品</p>
+              </div>
+            </div>
+            <div class="product-card placeholder-product">
+              <div class="product-placeholder">
+                <i class="fas fa-plus-circle"></i>
+                <p>待上传产品</p>
+              </div>
+            </div>
+            <div class="product-card placeholder-product">
+              <div class="product-placeholder">
+                <i class="fas fa-plus-circle"></i>
+                <p>待上传产品</p>
+              </div>
+            </div>
+            <div class="product-card placeholder-product">
+              <div class="product-placeholder">
+                <i class="fas fa-plus-circle"></i>
+                <p>待上传产品</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 产品展示网格（主要区域） -->
+    <section class="products-section" id="products">
+      <div class="container">
+        <h2 class="section-title">Our Products</h2>
+        <div class="product-grid" id="productGrid">
+          <!-- 空产品占位卡片 -->
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+          <div class="product-card placeholder-product">
+            <div class="product-placeholder">
+              <i class="fas fa-plus-circle"></i>
+              <p>待上传产品</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 服务保障 -->
+    <section class="trust-badges">
+      <div class="container">
+        <div class="badge-grid">
+          <div class="badge-item">
+            <i class="fas fa-truck"></i>
+            <h4>Free Shipping Over $99</h4>
+            <p>Save on your orders</p>
+          </div>
+          <div class="badge-item">
+            <i class="fas fa-shield-alt"></i>
+            <h4>24-Month Warranty</h4>
+            <p>2 Years Full Protection</p>
+          </div>
+          <div class="badge-item">
+            <i class="fas fa-undo"></i>
+            <h4>30-Day Returns</h4>
+            <p>7-Day No-Reason Returns</p>
+          </div>
+          <div class="badge-item">
+            <i class="fas fa-headset"></i>
+            <h4>24h Support</h4>
+            <p>Fast Support Guarantee</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== 页脚 ========== -->
+  <footer class="main-footer">
+    <div class="container">
+      <!-- 订阅区 -->
+      <section class="newsletter-section">
+        <div class="container newsletter-grid">
+          <div class="newsletter-content">
+            <h3>Subscribe Now and Get More</h3>
+            <p>Get the latest industry updates, product insights, exclusive discounts and start an exciting journey into the world of drones.</p>
+            <div class="ratings">
+              <div class="rating-badge">
+                <span class="stars">★★★★★</span>
+                <span class="score">4.8 / 5</span>
+                <small>Based on 4401 reviews</small>
+              </div>
+              <div class="rating-badge">
+                <span class="stars">★★★★★</span>
+                <span class="score">4.9 / 5</span>
+                <small>Top Quality Store</small>
+              </div>
+            </div>
+          </div>
+          <div class="newsletter-form">
+            <form id="subscribeForm">
+              <input type="email" placeholder="Your Email Address" required>
+              <button type="submit" class="btn btn-subscribe">Subscribe</button>
+            </form>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 链接列 -->
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>FPV Drone Parts</h4>
+          <ul>
+            <li><a href="#">FPV Drone Motor</a></li>
+            <li><a href="#">FPV 4IN1 ESC</a></li>
+            <li><a href="#">Flight Controller</a></li>
+            <li><a href="#">FPV Radio Controller</a></li>
+            <li><a href="#">FPV Goggles</a></li>
+            <li><a href="#">FPV Batteries</a></li>
+            <li><a href="#">FPV Propellers</a></li>
+            <li><a href="#">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>About US</h4>
+          <ul>
+            <li><a href="#">Why Choose Us</a></li>
+            <li><a href="#">Member Program</a></li>
+            <li><a href="#">Points Rules</a></li>
+            <li><a href="#">Become an Influencer</a></li>
+            <li><a href="#">Affiliate Programs</a></li>
+            <li><a href="#">Bulk & Custom Order</a></li>
+            <li><a href="#">New User Rewards</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help & Support</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Ordering & Payment</a></li>
+            <li><a href="#">Return & Refund</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="contact-info">
+            <li><i class="fas fa-envelope"></i> your@email.com</li>
+            <li><i class="fas fa-phone"></i> +1 (XXX) XXX-XXXX</li>
+          </ul>
+          <h4>Payment Methods</h4>
+          <div class="payment-icons">
+            <i class="fab fa-cc-paypal"></i>
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+            <i class="fab fa-cc-discover"></i>
+            <i class="fab fa-cc-apple-pay"></i>
+            <i class="fab fa-google-pay"></i>
+          </div>
+          <div class="security-badges">
+            <i class="fas fa-lock"></i> SSL Secured
+            <i class="fab fa-paypal"></i> Verified
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 版权栏 -->
+    <div class="copyright-bar">
+      <div class="container">
+        <p>&copy; 2026 YourDrone.shop. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JS ========== -->
+  <script ></script>
+</body>
+</html>
+
+<script>
+/**
+ * ================================================================
+ * YOUR DRONE STORE - Main JavaScript
+ * 轮播、倒计时、购物车计数、表单交互
+ * ================================================================
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ============================================================
+  // 1. Hero Banner 轮播
+  // ============================================================
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('bannerPrev');
+  const nextBtn = document.getElementById('bannerNext');
+  let currentSlide = 0;
+  let slideInterval;
+
+  function goToSlide(index) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function startSlider() {
+    slideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+  }
+
+  function resetSlider() {
+    clearInterval(slideInterval);
+    startSlider();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { goToSlide(currentSlide - 1); resetSlider(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { goToSlide(currentSlide + 1); resetSlider(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.index));
+      resetSlider();
+    });
+  });
+
+  startSlider();
+
+  // ============================================================
+  // 2. 倒计时（Flash Sale）
+  // ============================================================
+  const timerEl = document.getElementById('countdownTimer');
+  if (timerEl) {
+    // 目标时间：从现在起 12 小时后（可改为固定时间）
+    let targetTime = new Date().getTime() + 12 * 60 * 60 * 1000;
+
+    // 尝试从 localStorage 读取（刷新不重置）
+    const saved = localStorage.getItem('flashSaleEnd');
+    if (saved && parseInt(saved) > Date.now()) {
+      targetTime = parseInt(saved);
+    } else {
+      localStorage.setItem('flashSaleEnd', targetTime);
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetTime - now;
+
+      if (diff <= 0) {
+        // 倒计时结束，重置为 12 小时后
+        targetTime = new Date().getTime() + 12 * 60 * 60 * 1000;
+        localStorage.setItem('flashSaleEnd', targetTime);
+      }
+
+      const hours = Math.floor((targetTime - new Date().getTime()) / (1000 * 60 * 60));
+      const minutes = Math.floor(((targetTime - new Date().getTime()) % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor(((targetTime - new Date().getTime()) % (1000 * 60)) / 1000);
+
+      const blocks = timerEl.querySelectorAll('.time-block strong');
+      if (blocks[0]) blocks[0].textContent = String(hours).padStart(2, '0');
+      if (blocks[1]) blocks[1].textContent = String(minutes).padStart(2, '0');
+      if (blocks[2]) blocks[2].textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  // ============================================================
+  // 3. 购物车计数（模拟）
+  // ============================================================
+  let cartCount = 0;
+  const cartCountEl = document.getElementById('cartCount');
+  const addToCartBtns = document.querySelectorAll('.add-to-cart');
+
+  addToCartBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      cartCount++;
+      if (cartCountEl) cartCountEl.textContent = cartCount;
+
+      // 简单动画
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#27ae60';
+      setTimeout(() => {
+        btn.textContent = 'Add to Cart';
+        btn.style.background = '';
+      }, 1500);
+    });
+  });
+
+  // ============================================================
+  // 4. 邮件订阅表单
+  // ============================================================
+  const subscribeForm = document.getElementById('subscribeForm');
+  if (subscribeForm) {
+    subscribeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = subscribeForm.querySelector('input[type="email"]');
+      if (emailInput && emailInput.value) {
+        // 这里可以接入你的邮件订阅 API
+        alert('订阅成功！感谢关注 ' + document.querySelector('.logo-text').textContent.trim());
+        emailInput.value = '';
+      }
+    });
+  }
+
+  // ============================================================
+  // 5. 搜索框交互
+  // ============================================================
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert('搜索: ' + query + '\n（请接入你的搜索 API）');
+        }
+      }
+    });
+
+    document.querySelector('.search-btn')?.addEventListener('click', () => {
+      const query = searchInput.value.trim();
+      if (query) {
+        alert('搜索: ' + query + '\n（请接入你的搜索 API）');
+      }
+    });
+  }
+
+  // ============================================================
+  // 6. 分类选择器交互
+  // ============================================================
+  const couponBtn = document.querySelector('.btn-coupon');
+  if (couponBtn) {
+    couponBtn.addEventListener('click', () => {
+      couponBtn.textContent = '✓ COPIED!';
+      couponBtn.style.background = '#27ae60';
+      navigator.clipboard?.writeText('DRONE12').then(() => {
+        // 已复制到剪贴板
+      }).catch(() => {});
+      setTimeout(() => {
+        couponBtn.textContent = 'Collect';
+        couponBtn.style.background = '';
+      }, 2000);
+    });
+  }
+
+  // ============================================================
+  // 7. 平滑滚动到锚点
+  // ============================================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && document.querySelector(href)) {
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // ============================================================
+  // 8. 快速发货滚动区域（鼠标悬停暂停）
+  // ============================================================
+  const fastShipItems = document.getElementById('fastShipItems');
+  if (fastShipItems) {
+    fastShipItems.addEventListener('mouseenter', () => {
+      fastShipItems.style.animationPlayState = 'paused';
+    });
+    fastShipItems.addEventListener('mouseleave', () => {
+      fastShipItems.style.animationPlayState = 'running';
+    });
+  }
+
+  console.log('🚀 Your Drone Store - 模板已加载完成！');
+  console.log('📝 提示：在 images/ 文件夹放入你的产品图片，替换占位内容即可。');
+});
+</script>
+</body>
+</html>
